@@ -1,0 +1,649 @@
+Analysis & Synthesis report for weatherstation
+Mon Oct 19 12:15:36 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |weatherstation_SM|currentState
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |weatherstation_SM
+ 14. Parameter Settings for User Entity Instance: ms_clk:comb_3
+ 15. Parameter Settings for User Entity Instance: display:comb_8|clkdivider:comb_3
+ 16. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 17. lpm_mult Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "display:comb_8"
+ 19. Port Connectivity Checks: "binaryToBCD:comb_7"
+ 20. Port Connectivity Checks: "SPI_Module:comb_6"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Oct 19 12:15:36 2020       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; weatherstation                              ;
+; Top-level Entity Name              ; weatherstation_SM                           ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 195                                         ;
+;     Total combinational functions  ; 195                                         ;
+;     Dedicated logic registers      ; 78                                          ;
+; Total registers                    ; 78                                          ;
+; Total pins                         ; 23                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE6E22C8        ;                    ;
+; Top-level entity name                                            ; weatherstation_SM  ; weatherstation     ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                       ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; sevenseg.v                       ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/sevenseg.v                             ;         ;
+; clkdivider.v                     ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/clkdivider.v                           ;         ;
+; simple_DFF.v                     ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/simple_DFF.v                           ;         ;
+; decoderTwoBit.v                  ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/decoderTwoBit.v                        ;         ;
+; sequencerTwoBit.v                ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/sequencerTwoBit.v                      ;         ;
+; displayMux.v                     ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/displayMux.v                           ;         ;
+; weatherstation_SM.v              ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v                    ;         ;
+; ms_clk.v                         ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/ms_clk.v                               ;         ;
+; display.v                        ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/display.v                              ;         ;
+; binaryToBCD.v                    ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/binaryToBCD.v                          ;         ;
+; SPI_Module.v                     ; yes             ; User Verilog HDL File        ; D:/Documents/Github/weatherStation/FPGA/SPI_Module.v                           ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mult.tdf            ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/multcore.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/bypassff.inc            ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altshift.inc            ;         ;
+; multcore.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/multcore.tdf            ;         ;
+; csa_add.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/csa_add.inc             ;         ;
+; mpar_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/mpar_add.inc            ;         ;
+; muleabz.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/muleabz.inc             ;         ;
+; mul_lfrg.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/mul_lfrg.inc            ;         ;
+; mul_boothc.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/mul_boothc.inc          ;         ;
+; alt_ded_mult.inc                 ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/alt_ded_mult.inc        ;         ;
+; alt_ded_mult_y.inc               ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/alt_ded_mult_y.inc      ;         ;
+; dffpipe.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/dffpipe.inc             ;         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/mpar_add.tdf            ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;         ;
+; addcore.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/addcore.inc             ;         ;
+; look_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/look_add.inc            ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;         ;
+; db/add_sub_ogh.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Documents/Github/weatherStation/FPGA/db/add_sub_ogh.tdf                     ;         ;
+; altshift.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altshift.tdf            ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 195       ;
+;                                             ;           ;
+; Total combinational functions               ; 195       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 91        ;
+;     -- 3 input functions                    ; 27        ;
+;     -- <=2 input functions                  ; 77        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 124       ;
+;     -- arithmetic mode                      ; 71        ;
+;                                             ;           ;
+; Total registers                             ; 78        ;
+;     -- Dedicated logic registers            ; 78        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 23        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 43        ;
+; Total fan-out                               ; 873       ;
+; Average fan-out                             ; 2.74      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                              ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                  ; Entity Name       ; Library Name ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; |weatherstation_SM                          ; 195 (50)            ; 78 (33)                   ; 0           ; 0            ; 0       ; 0         ; 23   ; 0            ; |weatherstation_SM                                                                                                   ; weatherstation_SM ; work         ;
+;    |binaryToBCD:comb_7|                     ; 19 (19)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|binaryToBCD:comb_7                                                                                ; binaryToBCD       ; work         ;
+;    |display:comb_8|                         ; 68 (0)              ; 29 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8                                                                                    ; display           ; work         ;
+;       |clkdivider:comb_3|                   ; 40 (40)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|clkdivider:comb_3                                                                  ; clkdivider        ; work         ;
+;       |decoderTwoBit:comb_9|                ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|decoderTwoBit:comb_9                                                               ; decoderTwoBit     ; work         ;
+;       |displayMux:comb_7|                   ; 16 (16)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|displayMux:comb_7                                                                  ; displayMux        ; work         ;
+;       |sequencerTwoBit:comb_6|              ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|sequencerTwoBit:comb_6                                                             ; sequencerTwoBit   ; work         ;
+;       |sevenseg:comb_8|                     ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|sevenseg:comb_8                                                                    ; sevenseg          ; work         ;
+;       |simple_DFF:comb_4|                   ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|display:comb_8|simple_DFF:comb_4                                                                  ; simple_DFF        ; work         ;
+;    |lpm_mult:Mult0|                         ; 34 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|lpm_mult:Mult0                                                                                    ; lpm_mult          ; work         ;
+;       |multcore:mult_core|                  ; 34 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|lpm_mult:Mult0|multcore:mult_core                                                                 ; multcore          ; work         ;
+;          |mpar_add:padder|                  ; 14 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                 ; mpar_add          ; work         ;
+;             |lpm_add_sub:adder[0]|          ; 14 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                            ; lpm_add_sub       ; work         ;
+;                |add_sub_ogh:auto_generated| ; 14 (14)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_ogh:auto_generated ; add_sub_ogh       ; work         ;
+;    |ms_clk:comb_3|                          ; 24 (24)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |weatherstation_SM|ms_clk:comb_3                                                                                     ; ms_clk            ; work         ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |weatherstation_SM|currentState                                                                                    ;
++-------------------------------+-------------------+-------------------------------+-----------------------+------------------------+
+; Name                          ; currentState.idle ; currentState.processAndOutput ; currentState.calcWind ; currentState.resetting ;
++-------------------------------+-------------------+-------------------------------+-----------------------+------------------------+
+; currentState.resetting        ; 0                 ; 0                             ; 0                     ; 0                      ;
+; currentState.calcWind         ; 0                 ; 0                             ; 1                     ; 1                      ;
+; currentState.processAndOutput ; 0                 ; 1                             ; 0                     ; 1                      ;
+; currentState.idle             ; 1                 ; 0                             ; 0                     ; 1                      ;
++-------------------------------+-------------------+-------------------------------+-----------------------+------------------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; SPI_Module:comb_6|sck_record[0..2]     ; Stuck at GND due to stuck port data_in ;
+; SPI_Module:comb_6|data_recieved[4..7]  ; Lost fanout                            ;
+; SPI_Module:comb_6|bitcounter[0..3]     ; Lost fanout                            ;
+; SPI_Module:comb_6|current_state        ; Lost fanout                            ;
+; SPI_Module:comb_6|data_recieved[0..3]  ; Merged with SPI_Module:comb_6|miso[0]  ;
+; SPI_Module:comb_6|miso[0]              ; Stuck at GND due to stuck port data_in ;
+; currentState.resetting                 ; Lost fanout                            ;
+; currentState~5                         ; Lost fanout                            ;
+; currentState~6                         ; Lost fanout                            ;
+; Total Number of Removed Registers = 20 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                           ;
++---------------------------------+---------------------------+-------------------------------------------------------------------------+
+; Register name                   ; Reason for Removal        ; Registers Removed due to This Register                                  ;
++---------------------------------+---------------------------+-------------------------------------------------------------------------+
+; SPI_Module:comb_6|sck_record[0] ; Stuck at GND              ; SPI_Module:comb_6|sck_record[1], SPI_Module:comb_6|sck_record[2],       ;
+;                                 ; due to stuck port data_in ; SPI_Module:comb_6|data_recieved[4], SPI_Module:comb_6|data_recieved[5], ;
+;                                 ;                           ; SPI_Module:comb_6|data_recieved[6], SPI_Module:comb_6|current_state,    ;
+;                                 ;                           ; SPI_Module:comb_6|miso[0]                                               ;
++---------------------------------+---------------------------+-------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 78    ;
+; Number of registers using Synchronous Clear  ; 54    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 28    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |weatherstation_SM|currentState                          ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |weatherstation_SM|display:comb_8|displayMux:comb_7|Mux1 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |weatherstation_SM ;
++--------------------+--------------+-----------------------------------------------+
+; Parameter Name     ; Value        ; Type                                          ;
++--------------------+--------------+-----------------------------------------------+
+; idle               ; 00           ; Unsigned Binary                               ;
+; calcWind           ; 01           ; Unsigned Binary                               ;
+; processAndOutput   ; 10           ; Unsigned Binary                               ;
+; resetting          ; 11           ; Unsigned Binary                               ;
+; ONE_ROTATION_SPEED ; 1563         ; Signed Integer                                ;
+; S_DIVISOR          ; 011111010000 ; Unsigned Binary                               ;
++--------------------+--------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ms_clk:comb_3 ;
++----------------+------------------+------------------------+
+; Parameter Name ; Value            ; Type                   ;
++----------------+------------------+------------------------+
+; DIVISOR        ; 1100001101010000 ; Unsigned Binary        ;
++----------------+------------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:comb_8|clkdivider:comb_3 ;
++----------------+------------------------------+-------------------------------+
+; Parameter Name ; Value                        ; Type                          ;
++----------------+------------------------------+-------------------------------+
+; DIVISOR        ; 0000000000011000011010100000 ; Unsigned Binary               ;
++----------------+------------------------------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                     ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 8            ; Untyped             ;
+; LPM_WIDTHB                                     ; 11           ; Untyped             ;
+; LPM_WIDTHP                                     ; 19           ; Untyped             ;
+; LPM_WIDTHR                                     ; 19           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; YES          ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; NOTHING      ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance         ;
++---------------------------------------+----------------+
+; Name                                  ; Value          ;
++---------------------------------------+----------------+
+; Number of entity instances            ; 1              ;
+; Entity Instance                       ; lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8              ;
+;     -- LPM_WIDTHB                     ; 11             ;
+;     -- LPM_WIDTHP                     ; 19             ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED       ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; YES            ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
++---------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:comb_8"                                                                                                                                                                   ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                                                          ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit3 ; Input ; Warning  ; Input port expression (8 bits) is wider than the input port (4 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "binaryToBCD:comb_7"                                                                                                                                ;
++--------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                                                          ;
++--------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; number ; Input  ; Warning  ; Input port expression (8 bits) is smaller than the input port (13 bits) it drives.  Extra input bit(s) "number[12..8]" will be connected to GND. ;
+; digit3 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SPI_Module:comb_6"                                                                                                                                                 ;
++---------------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                ; Type   ; Severity ; Details                                                                                                                                             ;
++---------------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; miso                ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "miso[7..1]" have no fanouts                             ;
+; watersensor         ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "watersensor[7..1]" will be connected to GND. ;
+; done                ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                 ;
+; data_recieved[7..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                 ;
++---------------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 23                          ;
+; cycloneiii_ff         ; 78                          ;
+;     CLR               ; 4                           ;
+;     ENA               ; 16                          ;
+;     ENA SCLR          ; 12                          ;
+;     SCLR              ; 42                          ;
+;     plain             ; 4                           ;
+; cycloneiii_lcell_comb ; 204                         ;
+;     arith             ; 71                          ;
+;         2 data inputs ; 60                          ;
+;         3 data inputs ; 11                          ;
+;     normal            ; 133                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 14                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 91                          ;
+;                       ;                             ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 3.67                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Mon Oct 19 12:15:26 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off weatherstation -c weatherstation
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file sevenseg.v
+    Info (12023): Found entity 1: sevenseg File: D:/Documents/Github/weatherStation/FPGA/sevenseg.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file counter.v
+    Info (12023): Found entity 1: counter File: D:/Documents/Github/weatherStation/FPGA/counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clkdivider.v
+    Info (12023): Found entity 1: clkdivider File: D:/Documents/Github/weatherStation/FPGA/clkdivider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file weatherstation.v
+    Info (12023): Found entity 1: weatherstation File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file simple_dff.v
+    Info (12023): Found entity 1: simple_DFF File: D:/Documents/Github/weatherStation/FPGA/simple_DFF.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file watersensor.v
+    Info (12023): Found entity 1: watersensor File: D:/Documents/Github/weatherStation/FPGA/watersensor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file decodertwobit.v
+    Info (12023): Found entity 1: decoderTwoBit File: D:/Documents/Github/weatherStation/FPGA/decoderTwoBit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sequencertwobit.v
+    Info (12023): Found entity 1: sequencerTwoBit File: D:/Documents/Github/weatherStation/FPGA/sequencerTwoBit.v Line: 1
+Warning (12090): Entity "mux" obtained from "mux.v" instead of from Quartus Prime megafunction library File: D:/Documents/Github/weatherStation/FPGA/mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux.v
+    Info (12023): Found entity 1: mux File: D:/Documents/Github/weatherStation/FPGA/mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file fourinputmux.v
+    Info (12023): Found entity 1: fourInputMux File: D:/Documents/Github/weatherStation/FPGA/fourInputMux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file displaymux.v
+    Info (12023): Found entity 1: displayMux File: D:/Documents/Github/weatherStation/FPGA/displayMux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dispmux.v
+    Info (12023): Found entity 1: dispmux File: D:/Documents/Github/weatherStation/FPGA/dispmux.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file findwindspeed.v
+    Info (12023): Found entity 1: findWindSpeed File: D:/Documents/Github/weatherStation/FPGA/findWindSpeed.v Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file numbertodigits.v
+Info (12021): Found 1 design units, including 1 entities, in source file secondclk.v
+    Info (12023): Found entity 1: secondClk File: D:/Documents/Github/weatherStation/FPGA/secondClk.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file weatherstation_sm.v
+    Info (12023): Found entity 1: weatherstation_SM File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ms_clk.v
+    Info (12023): Found entity 1: ms_clk File: D:/Documents/Github/weatherStation/FPGA/ms_clk.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file display.v
+    Info (12023): Found entity 1: display File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file binarytobcd.v
+    Info (12023): Found entity 1: binaryToBCD File: D:/Documents/Github/weatherStation/FPGA/binaryToBCD.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file spi_module.v
+    Info (12023): Found entity 1: SPI_Module File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at weatherstation_SM.v(67): created implicit net for "sck" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 67
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(38): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 38
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(39): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 39
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(40): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 40
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(41): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 41
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(42): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 42
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(43): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 43
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(47): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 47
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(48): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 48
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation.v(49): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation.v Line: 49
+Critical Warning (10846): Verilog HDL Instantiation warning at fourInputMux.v(15): instance has no name File: D:/Documents/Github/weatherStation/FPGA/fourInputMux.v Line: 15
+Critical Warning (10846): Verilog HDL Instantiation warning at fourInputMux.v(16): instance has no name File: D:/Documents/Github/weatherStation/FPGA/fourInputMux.v Line: 16
+Critical Warning (10846): Verilog HDL Instantiation warning at fourInputMux.v(18): instance has no name File: D:/Documents/Github/weatherStation/FPGA/fourInputMux.v Line: 18
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation_SM.v(60): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 60
+Warning (10227): Verilog HDL Port Declaration warning at SPI_Module.v(27): data type declaration for "data_recieved" declares packed dimensions but the port declaration declaration does not File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 27
+Info (10499): HDL info at SPI_Module.v(12): see declaration for object "data_recieved" File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 12
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation_SM.v(67): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 67
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation_SM.v(71): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 71
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(26): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 26
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(29): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 29
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(31): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 31
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(33): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 33
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(36): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 36
+Critical Warning (10846): Verilog HDL Instantiation warning at display.v(38): instance has no name File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 38
+Critical Warning (10846): Verilog HDL Instantiation warning at weatherstation_SM.v(72): instance has no name File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 72
+Info (12127): Elaborating entity "weatherstation_SM" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at weatherstation_SM.v(95): truncated value with size 32 to match size of target (8) File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 95
+Warning (10230): Verilog HDL assignment warning at weatherstation_SM.v(100): truncated value with size 32 to match size of target (8) File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 100
+Info (10264): Verilog HDL Case Statement information at weatherstation_SM.v(89): all case item expressions in this case statement are onehot File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 89
+Info (12128): Elaborating entity "ms_clk" for hierarchy "ms_clk:comb_3" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 60
+Info (12128): Elaborating entity "SPI_Module" for hierarchy "SPI_Module:comb_6" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 67
+Warning (10230): Verilog HDL assignment warning at SPI_Module.v(48): truncated value with size 32 to match size of target (4) File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 48
+Warning (10230): Verilog HDL assignment warning at SPI_Module.v(52): truncated value with size 32 to match size of target (4) File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 52
+Warning (10230): Verilog HDL assignment warning at SPI_Module.v(55): truncated value with size 32 to match size of target (4) File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 55
+Info (12128): Elaborating entity "binaryToBCD" for hierarchy "binaryToBCD:comb_7" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 71
+Warning (10230): Verilog HDL assignment warning at binaryToBCD.v(31): truncated value with size 32 to match size of target (4) File: D:/Documents/Github/weatherStation/FPGA/binaryToBCD.v Line: 31
+Warning (10230): Verilog HDL assignment warning at binaryToBCD.v(29): truncated value with size 32 to match size of target (4) File: D:/Documents/Github/weatherStation/FPGA/binaryToBCD.v Line: 29
+Info (12128): Elaborating entity "display" for hierarchy "display:comb_8" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 72
+Info (12128): Elaborating entity "clkdivider" for hierarchy "display:comb_8|clkdivider:comb_3" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 26
+Warning (10230): Verilog HDL assignment warning at clkdivider.v(11): truncated value with size 28 to match size of target (26) File: D:/Documents/Github/weatherStation/FPGA/clkdivider.v Line: 11
+Warning (10230): Verilog HDL assignment warning at clkdivider.v(13): truncated value with size 28 to match size of target (26) File: D:/Documents/Github/weatherStation/FPGA/clkdivider.v Line: 13
+Info (12128): Elaborating entity "simple_DFF" for hierarchy "display:comb_8|simple_DFF:comb_4" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 29
+Info (12128): Elaborating entity "sequencerTwoBit" for hierarchy "display:comb_8|sequencerTwoBit:comb_6" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 31
+Info (12128): Elaborating entity "displayMux" for hierarchy "display:comb_8|displayMux:comb_7" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 33
+Warning (10235): Verilog HDL Always Construct warning at displayMux.v(17): variable "digit0" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/Github/weatherStation/FPGA/displayMux.v Line: 17
+Warning (10235): Verilog HDL Always Construct warning at displayMux.v(18): variable "digit1" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/Github/weatherStation/FPGA/displayMux.v Line: 18
+Warning (10235): Verilog HDL Always Construct warning at displayMux.v(19): variable "digit2" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/Github/weatherStation/FPGA/displayMux.v Line: 19
+Warning (10235): Verilog HDL Always Construct warning at displayMux.v(20): variable "digit3" is read inside the Always Construct but isn't in the Always Construct's Event Control File: D:/Documents/Github/weatherStation/FPGA/displayMux.v Line: 20
+Info (12128): Elaborating entity "sevenseg" for hierarchy "display:comb_8|sevenseg:comb_8" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 36
+Info (12128): Elaborating entity "decoderTwoBit" for hierarchy "display:comb_8|decoderTwoBit:comb_9" File: D:/Documents/Github/weatherStation/FPGA/display.v Line: 38
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 100
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 100
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 100
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "11"
+    Info (12134): Parameter "LPM_WIDTHP" = "19"
+    Info (12134): Parameter "LPM_WIDTHR" = "19"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 308
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/multcore.tdf Line: 228
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_ogh.tdf
+    Info (12023): Found entity 1: add_sub_ogh File: D:/Documents/Github/weatherStation/FPGA/db/add_sub_ogh.tdf Line: 22
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 351
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "miso" is stuck at GND File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 20
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 12 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/Documents/Github/weatherStation/FPGA/output_files/weatherstation.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sclk" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 6
+    Warning (15610): No output dependent on input pin "mosi" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 7
+    Warning (15610): No output dependent on input pin "cs" File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 8
+Info (21057): Implemented 219 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 196 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 46 warnings
+    Info: Peak virtual memory: 4847 megabytes
+    Info: Processing ended: Mon Oct 19 12:15:36 2020
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:18
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/Documents/Github/weatherStation/FPGA/output_files/weatherstation.map.smsg.
+
+

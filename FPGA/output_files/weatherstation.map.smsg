@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at weatherstation_SM.v(83): always construct contains both blocking and non-blocking assignments File: D:/Documents/Github/weatherStation/FPGA/weatherstation_SM.v Line: 83
+Warning (10268): Verilog HDL information at SPI_Module.v(32): always construct contains both blocking and non-blocking assignments File: D:/Documents/Github/weatherStation/FPGA/SPI_Module.v Line: 32

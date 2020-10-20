@@ -1,0 +1,153 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "09/10/2020 18:03:50"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          displayMux
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module displayMux_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [3:0] digit0;
+reg [3:0] digit1;
+reg [3:0] digit2;
+reg [3:0] digit3;
+reg [1:0] sel;
+// wires                                               
+wire [3:0] out;
+
+// assign statements (if any)                          
+displayMux i1 (
+// port map - connection between master ports and signals/registers   
+	.digit0(digit0),
+	.digit1(digit1),
+	.digit2(digit2),
+	.digit3(digit3),
+	.out(out),
+	.sel(sel)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+// digit0[ 3 ]
+initial
+begin
+	digit0[3] = 1'b0;
+end 
+// digit0[ 2 ]
+initial
+begin
+	digit0[2] = 1'b0;
+end 
+// digit0[ 1 ]
+initial
+begin
+	digit0[1] = 1'b0;
+end 
+// digit0[ 0 ]
+initial
+begin
+	digit0[0] = 1'b1;
+end 
+// digit1[ 3 ]
+initial
+begin
+	digit1[3] = 1'b0;
+end 
+// digit1[ 2 ]
+initial
+begin
+	digit1[2] = 1'b0;
+end 
+// digit1[ 1 ]
+initial
+begin
+	digit1[1] = 1'b1;
+end 
+// digit1[ 0 ]
+initial
+begin
+	digit1[0] = 1'b0;
+end 
+// digit2[ 3 ]
+initial
+begin
+	digit2[3] = 1'b0;
+end 
+// digit2[ 2 ]
+initial
+begin
+	digit2[2] = 1'b0;
+end 
+// digit2[ 1 ]
+initial
+begin
+	digit2[1] = 1'b1;
+end 
+// digit2[ 0 ]
+initial
+begin
+	digit2[0] = 1'b1;
+end 
+// digit3[ 3 ]
+initial
+begin
+	digit3[3] = 1'b0;
+end 
+// digit3[ 2 ]
+initial
+begin
+	digit3[2] = 1'b1;
+end 
+// digit3[ 1 ]
+initial
+begin
+	digit3[1] = 1'b0;
+end 
+// digit3[ 0 ]
+initial
+begin
+	digit3[0] = 1'b0;
+end 
+// sel[ 1 ]
+initial
+begin
+	repeat(12)
+	begin
+		sel[1] = 1'b0;
+		sel[1] = #40000 1'b1;
+		# 40000;
+	end
+	sel[1] = 1'b0;
+end 
+// sel[ 0 ]
+always
+begin
+	sel[0] = 1'b0;
+	sel[0] = #20000 1'b1;
+	#20000;
+end 
+endmodule
+

@@ -1,0 +1,6 @@
+module watersensor(clk, pin);
+	input pin;
+	input clk;
+	output waterDetected;
+	
+	

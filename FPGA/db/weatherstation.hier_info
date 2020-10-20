@@ -1,0 +1,296 @@
+|weatherstation_SM
+clk => clk.IN3
+reset => reset.IN1
+windsensor => always0.IN1
+windsensor => gotWindSpeed.OUTPUTSELECT
+windsensor => led2.DATAIN
+watersensor => watersensor.IN1
+led1 << LessThan0.DB_MAX_OUTPUT_PORT_TYPE
+led2 << windsensor.DB_MAX_OUTPUT_PORT_TYPE
+led3 << watersensor.DB_MAX_OUTPUT_PORT_TYPE
+led4 << tooWindy.DB_MAX_OUTPUT_PORT_TYPE
+digits[0] << display:comb_8.digits
+digits[1] << display:comb_8.digits
+digits[2] << display:comb_8.digits
+digits[3] << display:comb_8.digits
+seg[0] << display:comb_8.seg
+seg[1] << display:comb_8.seg
+seg[2] << display:comb_8.seg
+seg[3] << display:comb_8.seg
+seg[4] << display:comb_8.seg
+seg[5] << display:comb_8.seg
+seg[6] << display:comb_8.seg
+sclk => ~NO_FANOUT~
+miso << SPI_Module:comb_6.miso
+mosi => mosi.IN1
+cs => cs.IN1
+
+
+|weatherstation_SM|ms_clk:comb_3
+clk_in => counter[0].CLK
+clk_in => counter[1].CLK
+clk_in => counter[2].CLK
+clk_in => counter[3].CLK
+clk_in => counter[4].CLK
+clk_in => counter[5].CLK
+clk_in => counter[6].CLK
+clk_in => counter[7].CLK
+clk_in => counter[8].CLK
+clk_in => counter[9].CLK
+clk_in => counter[10].CLK
+clk_in => counter[11].CLK
+clk_in => counter[12].CLK
+clk_in => counter[13].CLK
+clk_in => counter[14].CLK
+clk_in => counter[15].CLK
+clk_out <= LessThan1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|SPI_Module:comb_6
+clk => miso[0]~reg0.CLK
+clk => miso[1]~reg0.CLK
+clk => miso[2]~reg0.CLK
+clk => miso[3]~reg0.CLK
+clk => miso[4]~reg0.CLK
+clk => miso[5]~reg0.CLK
+clk => miso[6]~reg0.CLK
+clk => miso[7]~reg0.CLK
+clk => data_recieved[0]~reg0.CLK
+clk => data_recieved[1]~reg0.CLK
+clk => data_recieved[2]~reg0.CLK
+clk => data_recieved[3]~reg0.CLK
+clk => data_recieved[4]~reg0.CLK
+clk => data_recieved[5]~reg0.CLK
+clk => data_recieved[6]~reg0.CLK
+clk => data_recieved[7]~reg0.CLK
+clk => bitcounter[0].CLK
+clk => bitcounter[1].CLK
+clk => bitcounter[2].CLK
+clk => bitcounter[3].CLK
+clk => current_state.CLK
+clk => cs_record[0].CLK
+clk => cs_record[1].CLK
+clk => cs_record[2].CLK
+clk => sck_record[0].CLK
+clk => sck_record[1].CLK
+clk => sck_record[2].CLK
+sck => sck_record[0].DATAIN
+mosi => data_recieved.DATAB
+miso[0] <= miso[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[1] <= miso[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[2] <= miso[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[3] <= miso[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[4] <= miso[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[5] <= miso[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[6] <= miso[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+miso[7] <= miso[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+windsensor[0] => Mux0.IN7
+windsensor[1] => Mux0.IN6
+windsensor[2] => Mux0.IN5
+windsensor[3] => Mux0.IN4
+windsensor[4] => Mux0.IN3
+windsensor[5] => Mux0.IN2
+windsensor[6] => Mux0.IN1
+windsensor[7] => Mux0.IN0
+watersensor[0] => Mux1.IN7
+watersensor[1] => Mux1.IN6
+watersensor[2] => Mux1.IN5
+watersensor[3] => Mux1.IN4
+watersensor[4] => Mux1.IN3
+watersensor[5] => Mux1.IN2
+watersensor[6] => Mux1.IN1
+watersensor[7] => Mux1.IN0
+cs => cs_record[0].DATAIN
+done <= <GND>
+data_recieved[0] <= data_recieved[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[1] <= data_recieved[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[2] <= data_recieved[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[3] <= data_recieved[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[4] <= data_recieved[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[5] <= data_recieved[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[6] <= data_recieved[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_recieved[7] <= data_recieved[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|binaryToBCD:comb_7
+number[0] => digit0[0].DATAIN
+number[1] => LessThan6.IN8
+number[1] => Add6.IN8
+number[1] => digit0.DATAA
+number[2] => LessThan4.IN8
+number[2] => Add4.IN8
+number[2] => digit0.DATAA
+number[3] => LessThan2.IN8
+number[3] => Add2.IN8
+number[3] => digit0.DATAA
+number[4] => LessThan1.IN8
+number[4] => Add1.IN8
+number[4] => digit0.DATAA
+number[5] => LessThan0.IN6
+number[5] => Add0.IN6
+number[5] => digit0.DATAA
+number[6] => LessThan0.IN5
+number[6] => Add0.IN5
+number[6] => digit0.DATAA
+number[7] => LessThan0.IN4
+number[7] => Add0.IN4
+number[7] => digit0.DATAA
+number[8] => ~NO_FANOUT~
+number[9] => ~NO_FANOUT~
+number[10] => ~NO_FANOUT~
+number[11] => ~NO_FANOUT~
+number[12] => ~NO_FANOUT~
+digit0[0] <= number[0].DB_MAX_OUTPUT_PORT_TYPE
+digit0[1] <= digit0.DB_MAX_OUTPUT_PORT_TYPE
+digit0[2] <= digit0.DB_MAX_OUTPUT_PORT_TYPE
+digit0[3] <= digit0.DB_MAX_OUTPUT_PORT_TYPE
+digit1[0] <= digit0.DB_MAX_OUTPUT_PORT_TYPE
+digit1[1] <= digit1.DB_MAX_OUTPUT_PORT_TYPE
+digit1[2] <= digit1.DB_MAX_OUTPUT_PORT_TYPE
+digit1[3] <= digit1.DB_MAX_OUTPUT_PORT_TYPE
+digit2[0] <= digit1.DB_MAX_OUTPUT_PORT_TYPE
+digit2[1] <= digit1.DB_MAX_OUTPUT_PORT_TYPE
+digit2[2] <= <GND>
+digit2[3] <= <GND>
+digit3[0] <= <GND>
+digit3[1] <= <GND>
+digit3[2] <= <GND>
+digit3[3] <= <GND>
+
+
+|weatherstation_SM|display:comb_8
+sys_clk => sys_clk.IN2
+reset => _.IN1
+digit0[0] => digit0[0].IN1
+digit0[1] => digit0[1].IN1
+digit0[2] => digit0[2].IN1
+digit0[3] => digit0[3].IN1
+digit1[0] => digit1[0].IN1
+digit1[1] => digit1[1].IN1
+digit1[2] => digit1[2].IN1
+digit1[3] => digit1[3].IN1
+digit2[0] => digit2[0].IN1
+digit2[1] => digit2[1].IN1
+digit2[2] => digit2[2].IN1
+digit2[3] => digit2[3].IN1
+digit3[0] => digit3[0].IN1
+digit3[1] => digit3[1].IN1
+digit3[2] => digit3[2].IN1
+digit3[3] => digit3[3].IN1
+digits[0] <= decoderTwoBit:comb_9.out
+digits[1] <= decoderTwoBit:comb_9.out
+digits[2] <= decoderTwoBit:comb_9.out
+digits[3] <= decoderTwoBit:comb_9.out
+seg[0] <= sevenseg:comb_8.seg
+seg[1] <= sevenseg:comb_8.seg
+seg[2] <= sevenseg:comb_8.seg
+seg[3] <= sevenseg:comb_8.seg
+seg[4] <= sevenseg:comb_8.seg
+seg[5] <= sevenseg:comb_8.seg
+seg[6] <= sevenseg:comb_8.seg
+
+
+|weatherstation_SM|display:comb_8|clkdivider:comb_3
+clk_in => counter[0].CLK
+clk_in => counter[1].CLK
+clk_in => counter[2].CLK
+clk_in => counter[3].CLK
+clk_in => counter[4].CLK
+clk_in => counter[5].CLK
+clk_in => counter[6].CLK
+clk_in => counter[7].CLK
+clk_in => counter[8].CLK
+clk_in => counter[9].CLK
+clk_in => counter[10].CLK
+clk_in => counter[11].CLK
+clk_in => counter[12].CLK
+clk_in => counter[13].CLK
+clk_in => counter[14].CLK
+clk_in => counter[15].CLK
+clk_in => counter[16].CLK
+clk_in => counter[17].CLK
+clk_in => counter[18].CLK
+clk_in => counter[19].CLK
+clk_in => counter[20].CLK
+clk_in => counter[21].CLK
+clk_in => counter[22].CLK
+clk_in => counter[23].CLK
+clk_in => counter[24].CLK
+clk_in => counter[25].CLK
+clk_out <= LessThan1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|display:comb_8|simple_DFF:comb_4
+clk => out_1~reg0.CLK
+in_1 => out_1~reg0.DATAIN
+reset => out_1~reg0.ACLR
+out_1 <= out_1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|display:comb_8|sequencerTwoBit:comb_6
+clk => out[0]~reg0.CLK
+clk => out[1]~reg0.CLK
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|display:comb_8|displayMux:comb_7
+digit0[0] => Mux3.IN0
+digit0[1] => Mux2.IN0
+digit0[2] => Mux1.IN0
+digit0[3] => Mux0.IN0
+digit1[0] => Mux3.IN1
+digit1[1] => Mux2.IN1
+digit1[2] => Mux1.IN1
+digit1[3] => Mux0.IN1
+digit2[0] => Mux3.IN2
+digit2[1] => Mux2.IN2
+digit2[2] => Mux1.IN2
+digit2[3] => Mux0.IN2
+digit3[0] => Mux3.IN3
+digit3[1] => Mux2.IN3
+digit3[2] => Mux1.IN3
+digit3[3] => Mux0.IN3
+sel[0] => Mux0.IN5
+sel[0] => Mux1.IN5
+sel[0] => Mux2.IN5
+sel[0] => Mux3.IN5
+sel[1] => Mux0.IN4
+sel[1] => Mux1.IN4
+sel[1] => Mux2.IN4
+sel[1] => Mux3.IN4
+out[0] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|display:comb_8|sevenseg:comb_8
+bcd[0] => Decoder0.IN3
+bcd[1] => Decoder0.IN2
+bcd[2] => Decoder0.IN1
+bcd[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|weatherstation_SM|display:comb_8|decoderTwoBit:comb_9
+s[0] => out.IN0
+s[0] => out.IN0
+s[0] => out.IN0
+s[0] => out.IN0
+s[1] => out.IN1
+s[1] => out.IN1
+s[1] => out.IN1
+s[1] => out.IN1
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,4 @@
+module numberToDigits(input number, output digit0, output digit1, output digit2, output digit3);
+	
+
+endmodule

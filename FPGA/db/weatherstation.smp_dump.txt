@@ -1,0 +1,7 @@
+
+State Machine - |weatherstation_SM|currentState
+Name currentState.idle currentState.processAndOutput currentState.calcWind currentState.resetting 
+currentState.resetting 0 0 0 0 
+currentState.calcWind 0 0 1 1 
+currentState.processAndOutput 0 1 0 1 
+currentState.idle 1 0 0 1 

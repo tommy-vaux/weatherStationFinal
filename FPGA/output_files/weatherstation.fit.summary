@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Oct 19 12:15:41 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : weatherstation
+Top-level Entity Name : weatherstation_SM
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 195 / 6,272 ( 3 % )
+    Total combinational functions : 195 / 6,272 ( 3 % )
+    Dedicated logic registers : 78 / 6,272 ( 1 % )
+Total registers : 78
+Total pins : 23 / 92 ( 25 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

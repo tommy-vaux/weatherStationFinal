@@ -1,0 +1,4 @@
+module secondClk(clk_in, clk_out);
+	
+
+endmodule
